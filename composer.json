@@ -1,0 +1,7 @@
+{
+    "name": "yacine/slim",
+    "description": "slim app",
+    "require": {
+        "slim/slim": "3.1"
+    }
+}

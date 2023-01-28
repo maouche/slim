@@ -1,0 +1,12 @@
+/vendor/
+
+
+# composer
+/composer.phar
+composer.lock
+
+# IDEs
+/.idea
+
+# System files
+.DS_Store
