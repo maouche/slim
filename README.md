@@ -1,5 +1,19 @@
 # Slim App exemple
 
+## Installation
+
+```bash
+git clone https://github.com/maouche/slim.git
+```
+
+```bash
+cd slim
+```
+
+```bash
+composer install
+```
+
 ## Run server
 
 ```bash

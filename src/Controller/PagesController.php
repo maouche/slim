@@ -3,18 +3,11 @@
 
 namespace App\Controller;
 
-use \Psr\Http\Message\ServerRequestInterface as Request;
+use \Psr\Http\Message\RequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
+use App\Controller\DefaultController;
 
-
-class PagesController {
-
-    protected $container;
-
-    public function __construct($container)
-    {
-        $this->container = $container;
-    }
+class PagesController extends DefaultController {
 
     public function home(Request $request, Response $response, array $args) {
         return $this->render($response, '/pages/home.twig');
@@ -23,8 +16,13 @@ class PagesController {
     public function getContact(Request $request, Response $response, array $args) {
         return $this->render($response, '/pages/contact.twig');
     }
+    
+    public function postContact($request, Response $response, array $args) {
+        $data = $request->getParsedBody();
 
-    public function render($response, $view, $params = []) {
-        $this->container->view->render($response, $view, $params);
+        return $this->render($response, '/pages/contact.twig', [
+            'debug' => true,
+            'data' => $data
+        ]);
     }
 }

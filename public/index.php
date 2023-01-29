@@ -2,6 +2,8 @@
 
 require '../vendor/autoload.php';
 
+use App\Controller\PagesController;
+use App\Middleware\XssMiddleware;
 
 $app = new \Slim\App([
     "settings" => [
@@ -12,9 +14,14 @@ $app = new \Slim\App([
 require '../src/container.php';
 
 
-$app->get('/', App\Controller\PagesController::class . ':home')->setName('home');
+$app->get('/', PagesController::class . ':home')->setName('home');
 
-$app->get('/contact', App\Controller\PagesController::class . ':getContact')->setName('contact');
+$app->get('/contact', PagesController::class . ':getContact')->setName('contact');
+
+$app
+    ->post('/contact', PagesController::class . ':postContact')
+    ->add(new XssMiddleware())
+;
 
 
 
